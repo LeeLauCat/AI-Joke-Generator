@@ -1,29 +1,39 @@
-const jokeEl = document.getElementById('joke');          // div id = joke        
-const get_joke = document.getElementById('get_joke');    // button id = get_joke 
+const jokeEl = document.getElementById("joke");
+const btn = document.getElementById("get_joke");
+const category = document.getElementById("category");
 
-get_joke.addEventListener('click', generateJoke);
-generateJoke();                                          
+btn.addEventListener("click", generateJoke);
 
-async function generateJoke() {
+async function generateJoke(){
+btn.disabled = true;
+jokeEl.innerHTML = "⏳ Loading joke...";
 
-    jokeEl.innerHTML = "Loading...";
-    get_joke.disabled = true;
+try{
+    let url;
 
-    try {
-        const jokeRes = await fetch('https://icanhazdadjoke.com/', {
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
+if(category.value === "dad"){
+url = "https://icanhazdadjoke.com/";
+const response = await fetch(url,{
+headers:{Accept:"application/json"
+}
+});
 
-        const joke = await jokeRes.json();
+const data = await response.json();
+jokeEl.innerHTML =`😂 ${data.joke}`;
+}
 
-        jokeEl.innerHTML = joke.joke;
-    }
-    catch(error) {
-        jokeEl.innerHTML = "Failed to load joke.";
-    }
-    finally {
-        get_joke.disabled = false;
-    }
+else{
+url ="https://v2.jokeapi.dev/joke/Programming?type=single";
+const response =await fetch(url);
+const data =await response.json();
+jokeEl.innerHTML =`💻 ${data.joke}`;
+}}
+
+catch(error){
+jokeEl.innerHTML ="❌ Could not load joke.";
+}
+
+finally{
+btn.disabled = false;
+}
 }
