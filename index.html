@@ -1,34 +1,50 @@
-<!DOCTYPE html>   
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Jokes Generator</title>
-    <link rel="stylesheet" href="style.css">   <!-- Link CSS -->    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Interactive Joke Generator</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
-<body style="background-color:#f2a4e5;">
 
-    <div class="container">
-        <h3>Random Jokes Generator</h3>
-        <div id="joke" class="joke">          
-            Here's the joke for you
-        </div>
-        <button id="get_joke" class="btn">          
-            Get another joke
-        </button>
+<body>
 
+<div class="container">
 
-    </div>
+<h1>😂 Joke Generator</h1>
 
-    <p>
+<p class="subtitle">
+Choose your joke style and generate one!
+</p>
+
+<select id="category">
+
+<option value="dad">Dad Joke</option>
+<option value="programming">Programming Joke</option>
+
+</select>
+
+<div id="joke" class="joke">
+Click Generate to start
+</div>
+
+<button id="get_joke" class="btn">
+Generate Joke
+</button>
+
+</div>
+<p>
         This AI project was coded by <a href="https://github.com/LeeLauCat/" target="_blank"> 
         Tshepo M.</a> and is <a href="https://github.com/LeeLauCat/AI-Joke-Generator" target="_blank">open-sourced on GitHub</a> and is 
         <a href="https://app.netlify.com/teams/leelaucat/projects" target="_blank">hosted on Netlify</a>
 
     </p>
     
-    
-    <script src="script.js"></script>    <!-- Link JS -->  
+
+<script src="script.js"></script>
+
 </body>
 </html>
